@@ -1,0 +1,26 @@
+{
+  "name": "05_nasa_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-server":"npm i --prefix server",
+    "install-client":"npm i --prefix client",
+    "install": "npm run install-server && npm run install-client",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "npm run server & npm run client",
+    "test": "npm run text --prefix server && npm run test --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IsaacNascimento/nasa_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IsaacNascimento/nasa_project/issues"
+  },
+  "homepage": "https://github.com/IsaacNascimento/nasa_project#readme"
+}

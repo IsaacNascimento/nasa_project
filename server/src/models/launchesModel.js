@@ -11,6 +11,22 @@ const launch = {
     success: true,
 };
 
+let latestFlightNumber = launch.flightNumber;
+
 launches.set(launch.flightNumber, launch);
 
-module.exports = { launches };
+function gettAllLaunches() {
+    return Array.from(launches.values());
+}
+
+function addNewLaunches(launch) {
+    latestFlightNumber++;
+    launches.set(latestFlightNumber, Object.assign(launch, {
+        success: true,
+        upcoming: true,
+        customer: ['Zero to Mastery', 'Nasa'],
+        flightNumber: latestFlightNumber, 
+    }));
+}
+
+module.exports = { gettAllLaunches, addNewLaunches };

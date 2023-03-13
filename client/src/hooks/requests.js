@@ -8,7 +8,7 @@ async function httpGetPlanets() {
 }
 
 async function httpGetLaunches() {
-  const res = await fetch(`${api}/launches`);
+  const res = await fetch(`${api}launches`);
   const fetchedLaunches = await res.json();
   return fetchedLaunches.sort((a, b) => {
     return a.flightNumber - b.flightNumber;
@@ -20,6 +20,21 @@ async function httpGetLaunches() {
 async function httpSubmitLaunch(launch) {
   // TODO: Once API is ready.
   // Submit given launch data to launch system.
+  try {
+    return await fetch(`${api}launches`, {
+      method: "POST",
+      body: JSON.stringify(launch),
+      headers: { 
+        "Content-Type": "application/json" 
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    return { 
+      error,
+      ok: false,
+    }
+  }
 }
 
 async function httpAbortLaunch(id) {
@@ -27,9 +42,4 @@ async function httpAbortLaunch(id) {
   // Delete launch with given ID.
 }
 
-export {
-  httpGetPlanets,
-  httpGetLaunches,
-  httpSubmitLaunch,
-  httpAbortLaunch,
-};
+export { httpGetPlanets, httpGetLaunches, httpSubmitLaunch, httpAbortLaunch };

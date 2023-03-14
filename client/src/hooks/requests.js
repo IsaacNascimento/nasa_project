@@ -24,22 +24,32 @@ async function httpSubmitLaunch(launch) {
     return await fetch(`${api}launches`, {
       method: "POST",
       body: JSON.stringify(launch),
-      headers: { 
-        "Content-Type": "application/json" 
+      headers: {
+        "Content-Type": "application/json",
       },
     });
   } catch (error) {
     console.log(error);
-    return { 
+    return {
       error,
       ok: false,
-    }
+    };
   }
 }
 
 async function httpAbortLaunch(id) {
   // TODO: Once API is ready.
   // Delete launch with given ID.
+  try {
+    return await fetch(`${api}launches/${id}`, {
+      method: "DELETE",
+    });
+  } catch (e) {
+    console.log(e);
+    return {
+      ok: false,
+    };
+  }
 }
 
 export { httpGetPlanets, httpGetLaunches, httpSubmitLaunch, httpAbortLaunch };

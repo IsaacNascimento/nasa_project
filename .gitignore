@@ -1,5 +1,7 @@
 nasa-front-end.zip
 
+.env
+
 package-lock.json
 
 **/client/node_modules

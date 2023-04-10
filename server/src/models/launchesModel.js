@@ -48,7 +48,7 @@ async function saveLaunch(launch) {
     throw new Error('No Matching planet found');
   }
 
-  return await launchesDB.updateOne({
+  return await launchesDB.findOneAndUpdate({
     flightNumber: launch.flightNumber,
   }, launch, {
     upsert: true,
